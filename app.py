@@ -35,6 +35,7 @@ class MainWindow(QMainWindow):
 
 stylesheet = """
     MainWindow {
+        background-color: green;
         background-image: url("D:/UNI STUFF\/fourth year/sem 2/GGP/VAROMATIC-APP/assets"); 
         background-repeat: no-repeat; 
         background-position: top;
