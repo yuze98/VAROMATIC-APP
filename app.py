@@ -1,36 +1,41 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtWidgets import QApplication, QMainWindow
+# from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QPixmap
+
 import sys
-
-# def window():
-#     app = QApplication(sys.argv)
-#     win = QMainWindow()
-#     win.setGeometry(200,200,300,300)
-#     win.setWindowTitle('Varomatic APP')
-
-#     win.show()
-#     sys.exit(app.exec_())
-
-# window()
+# from lib.offside_modules.Main import *
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        super().__init__()
+        QWidget.__init__(self)
+        layout = QVBoxLayout(self)
 
-        self.centralwidget = QWidget()
-        self.setCentralWidget(self.centralwidget)
-
-        self.pushButton1 = QPushButton("Button 1", self.centralwidget)
-        self.pushButton2 = QPushButton("Button 2", self.centralwidget)
-
-        lay = QHBoxLayout(self.centralwidget)
-        lay.addWidget(self.pushButton1)
-        lay.addWidget(self.pushButton2)
+        self.Qcombo = QComboBox(self)
+        self.Qcombo.addItem("Camera 1")
+        self.Qcombo.addItem("Camera 2")
+        # self.cb.currentIndexChanged.connect(self.selectionchange)
+        
+        self.pushButton = QPushButton("Activate",self)
+        self.pushButton.setFixedWidth(200)
+        self.pushButton.setFixedHeight(50)
+        self.pushButton.move(500,800)
+        
+        label = QLabel(self)
+        pixmap = QPixmap('assets/logo.jpg')
+        label.setPixmap(pixmap)
+        # self.setCentralWidget(label)
+        label.setFixedHeight(500)
+        label.setFixedWidth(500)
+        label.move(500,0)
+        # self.pushButton.clicked.connect(mainProcess())
+        lay = QHBoxLayout(self)
+        lay.addWidget(self.pushButton)
+        lay.addWidget(self.pushButton)
 
 
 stylesheet = """
     MainWindow {
-        background-image: url("D:/UNI STUFF\/fourth year/sem 2/GGP/VAROMATIC-APP/assets/logo.jpg"); 
+        background-image: url("D:/UNI STUFF\/fourth year/sem 2/GGP/VAROMATIC-APP/assets"); 
         background-repeat: no-repeat; 
         background-position: top;
     }
@@ -41,6 +46,6 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyleSheet(stylesheet)     # <---
     window = MainWindow()
-    window.resize(640, 640)
+    window.resize(1280, 960)
     window.show()
     sys.exit(app.exec_())
