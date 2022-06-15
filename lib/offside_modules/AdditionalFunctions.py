@@ -68,7 +68,7 @@ def PrintFinalVisuals(frame, ind, decision,imgToShow):
                 fontFace=cv2.FONT_HERSHEY_TRIPLEX, fontScale=1, color=(100, 30, 100), thickness=1)
     # cv2.imwrite("Final_OutPut/outputFrame"+str(ind)+".jpg", frame)
     cv2.imshow("Frame", imgToShow)
-    return
+    return imgToShow
 '''
 * This function is used to get the intersection of both line if exists 
 * @param  line1,line2  the 2 lines for intersection checking

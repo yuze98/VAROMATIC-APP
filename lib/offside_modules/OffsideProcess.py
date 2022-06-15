@@ -45,7 +45,7 @@ def processing(frame,index,prevFrame,col1,col2,vp,direction):
     # print('pllayer det time:',previ - time.time())   
 
     decision = offsideDecision(direction, frame, boxes, vp)
-    PrintFinalVisuals(frame, index, decision,imgToShow=frame)
+    finaloutput= PrintFinalVisuals(frame, index, decision,imgToShow=frame)
 
-    return col1, col2, vp
+    return col1, col2, vp,finaloutput
 
