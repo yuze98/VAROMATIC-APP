@@ -13,3 +13,30 @@ and goal line detection for side cameras
 
 # App Screenshots
 
+### LOGO
+
+![APPLOGO](/assets/logobg.jpg)
+
+### App 1
+
+![APP1](/assets/f1.png)
+
+### App 2
+
+![APP2](/assets/f2.png)
+
+### App 3
+
+![APP2](/assets/f3.png)
+
+### App 4
+
+![APP3](/assets/f4.png)
+
+### App 5
+
+![APP4](/assets/f5.png)
+
+
+## VIDEO DEMO for the APP
+- [Demo app video](https://drive.google.com/file/d/1ZkYw1xKWKxBzubG5jXug-fgI5MtMZIBo/view?usp=sharing)
