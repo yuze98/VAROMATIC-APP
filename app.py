@@ -5,20 +5,22 @@ from PyQt5 import QtGui
 
 import sys
 sys.path.insert(1, 'D:/UNI STUFF/Fourth year comp/sem 2/GGP/VAROMATIC-APP/lib/offside_modules')
+sys.path.insert(1, 'D:/UNI STUFF/Fourth year comp/sem 2/GGP/VAROMATIC-APP/lib/Goal_Line_modules')
+from GoalLineProcess import GoalLineProcess
 from Main import * 
+
 import numpy as np
 class MainWindow(QMainWindow):
     def __init__(self):
         QWidget.__init__(self)
         layout = QVBoxLayout(self)
-        def sadFunction():
-            print('saaad')
+       
         def activate():
             print(self.Qcombo.currentText())
             if self.Qcombo.currentText() == 'Camera 1':
                 return mainProcess(self)
             else:
-               return sadFunction()
+               return GoalLineProcess()
         self.Qcombo = QComboBox(self)
         self.Qcombo.addItem("Camera 1")
         self.Qcombo.addItem("Camera 2")
