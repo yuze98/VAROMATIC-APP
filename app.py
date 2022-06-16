@@ -17,9 +17,9 @@ class MainWindow(QMainWindow):
             print(self.Qcombo.currentText())
             if self.Qcombo.currentText() == 'Camera 1':
                 if self.Qcombo2.currentText() == 'YOLO':
-                    return mainProcess(True,'mes')
+                    return mainProcess(True,'new2')
                 else:
-                    return mainProcess(False,'mes')
+                    return mainProcess(False,'new2')
             else:
                return GoalLineProcess()
         self.Qcombo = QComboBox(self)
@@ -39,11 +39,11 @@ class MainWindow(QMainWindow):
         self.pushButton.move(400,500)
 
         label = QLabel(self)
-        pixmap = QPixmap('assets/logo.jpg')
+        pixmap = QPixmap('assets/logobg.jpg')
         label.setPixmap(pixmap)
         label.setFixedHeight(500)
         label.setFixedWidth(500)
-        label.move(250,0)
+        label.move(235,0)
         self.pushButton.clicked.connect(activate)
         lay = QHBoxLayout(self)
         lay.addWidget(self.pushButton)
@@ -51,10 +51,9 @@ class MainWindow(QMainWindow):
 
 stylesheet = """
     MainWindow {
-        background-color: green;
-        background-image: url("D:/UNI STUFF\/fourth year/sem 2/GGP/VAROMATIC-APP/assets"); 
+        background-image: url("D:/UNI STUFF/Fourth year comp/sem 2/GGP/VAROMATIC-APP/assets/football2.jpg"); 
         background-repeat: no-repeat; 
-        background-position: top;
+        background-position: center;
     }
 """
 
