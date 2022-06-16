@@ -1,5 +1,5 @@
 # VAROMATIC-APP
-A desktop developed with PYQT5 for VAROMATIC project. 
+A desktop application developed with PYQT5 for VAROMATIC project. 
 A graduation project presented by Youssef Hatem, Youssef Ahmed, Mostafa Hazem and Mazen Ayman
 supervised by Dr. Magda Fayek
 to CAIRO UNIVERSITY, FACULTY OF ENGINEERING, COMPUTER DEPARTMENT-CHS
