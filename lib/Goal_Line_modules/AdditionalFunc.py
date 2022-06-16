@@ -13,10 +13,8 @@ import cv2
 def PrintFinalVisuals(frame, ind, decision,imgToShow,res):
     cv2.putText(img=frame, text='Goal Decision: '+str(decision), org=(300, 1800),
                 fontFace=cv2.FONT_HERSHEY_TRIPLEX, fontScale=2, color=(0, 0, 0), thickness=1)
-    # cv2.imwrite("Final_OutPut/outputFrame"+str(ind)+".jpg", frame)
     imgToShow_reized = cv2.resize(imgToShow, res)                    # Resize image
-    # prev = time.time()
     cv2.imshow("Frame", imgToShow_reized)
-    # print(time.time()-prev)
+    ###
 
     return

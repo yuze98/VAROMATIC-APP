@@ -10,8 +10,8 @@ from AdditionalFunc import PrintFinalVisuals
 * then we use the goal detection algorithm to extracct the output
 '''
 
-def GoalLineProcess():
-    clip = cv2.VideoCapture("assets/rec.mp4")
+def GoalLineProcess(fileName):
+    clip = cv2.VideoCapture("assets/"+fileName+".mp4")
     index = 0
     frame_rate = 20  # current frame rate of the video is 30
     prev = 0

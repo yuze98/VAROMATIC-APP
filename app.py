@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
                 else:
                     return mainProcess(False,'new2',self.Qcombo3.currentText())
             else:
-               return GoalLineProcess()
+               return GoalLineProcess('rec')
         
         self.Qcombo = QComboBox(self)
         self.Qcombo.addItem("Camera 1")
