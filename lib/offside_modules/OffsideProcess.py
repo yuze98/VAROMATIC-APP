@@ -5,6 +5,9 @@ from VanishingPoint import vanishingPoint
 from TeamClassification import teamsClassification
 from OffsideDecisionMaker import offsideDecision
 from AdditionalFunctions import PrintFinalVisuals
+from PassDetection import AttackDirection
+from PlayerDetectionYOLO import playersDetection
+
 '''
 * This function processes everything in one iteration to find the offside and call all the functions
 * @param  frame  the frame to be processed
@@ -15,14 +18,17 @@ from AdditionalFunctions import PrintFinalVisuals
 * @param  direction  the direction of the play
 * @return           a processed frame of the final result video
 '''
-def processing(frame,index,prevFrame,col1,col2,vp,direction):
+def processing(frame,index,prevFrame,col1,col2,vp,direction,model,outputLayers,isYolo):
 
-    if index == 0:
-        img, allBoxes, keptBoxes = playersDetectionIP(frame)
+    if(isYolo):
+        allBoxes, keptBoxes = playersDetection(frame, model, outputLayers, 0.5)
     else:
-        img, allBoxes, keptBoxes = playersDetectionIP(frame, col1, col2)
-        # direction = AttackDirection(prevFrame,frame,index)
-        # cv2.imwrite('img/teamOut'+str(index)+'.jpg', img)
+        if index == 0:
+            img, allBoxes, keptBoxes = playersDetectionIP(frame)
+        else:
+            img, allBoxes, keptBoxes = playersDetectionIP(frame, col1, col2)
+            # direction = AttackDirection(prevFrame,frame,index)
+            # cv2.imwrite('img/teamOut'+str(index)+'.jpg', img)
 
     if index == 0:
         # print(index)
@@ -45,7 +51,5 @@ def processing(frame,index,prevFrame,col1,col2,vp,direction):
     # print('pllayer det time:',previ - time.time())   
 
     decision = offsideDecision(direction, frame, boxes, vp)
-    finaloutput= PrintFinalVisuals(frame, index, decision,imgToShow=frame)
-
-    return col1, col2, vp,finaloutput
-
+    PrintFinalVisuals(frame, index, decision,imgToShow=frame)
+    return col1, col2, vp

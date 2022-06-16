@@ -73,8 +73,7 @@ def teamsClassification(frame, boxes, keptBoxes, colors):
 
         else:
             boxes[box].append(None)
-        # For printing purposes
-        # cv2.imwrite('teamClassfication.jpg', outputFrame)
-    # print("boxes are", boxes)
+
+    # cv2.imshow("Frame", outputFrame)
 
     return boxes, outputFrame

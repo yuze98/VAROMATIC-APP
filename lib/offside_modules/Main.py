@@ -1,20 +1,15 @@
 import cv2
 import time
 from OffsideProcess import *
-from PyQt5.QtCore import QThread, Qt, pyqtSignal, pyqtSlot
-
-import numpy as np
+from PlayerDetectionYOLO import loadYolo
 
 '''
 * This is the testing phase runining the process LIVE
 # # Folders to print in: 
 # # img,ball_img,img_class,Final_OutPut
 '''
-# class OffsideDetection(QThread):
-#     change_pixmap_signal = pyqtSignal(np.ndarray)
-
-def mainProcess(self):
-    clip = cv2.VideoCapture("assets/new1.mp4")
+def mainProcess(isYolo,fileName):
+    clip = cv2.VideoCapture("assets/"+fileName+".mp4")
     index = 0
     col1=None
     col2=None
@@ -23,6 +18,10 @@ def mainProcess(self):
     frame_rate = 30 #current frame rate of the video is 30 
     prev = 0
     vp = None
+    model = None
+    outputLayers = None
+    if isYolo:
+        model, outputLayers = loadYolo("D:/UNI STUFF/Fourth year comp/sem 2/GGP/VAROMATIC-APP/assets/yolov3.cfg", "D:/UNI STUFF/Fourth year comp/sem 2/GGP/VAROMATIC-APP/assets/yolov3.weights")
     while True:
         time_elapsed = time.time() - prev
         res, frame = clip.read()
@@ -33,11 +32,8 @@ def mainProcess(self):
         if time_elapsed > 1./frame_rate:
             prev = time.time()
             try:
-                col1,col2, vp,finaloutput = processing(frame,index,prevFrame,col1,col2,vp,direction)
-                self.change_pixmap_signal.emit(finaloutput)
-
+                col1,col2, vp = processing(frame, index, prevFrame, col1, col2, vp, direction, model, outputLayers, isYolo)
             except Exception:
-                # print('entered here')
                 pass
             index += 1
             prevFrame = frame
@@ -50,4 +46,4 @@ def mainProcess(self):
     cv2.destroyAllWindows()
     cv2.waitKey(1)
 
-# mainProcess()
+# mainProcess(False)
