@@ -17,11 +17,12 @@ class MainWindow(QMainWindow):
             print(self.Qcombo.currentText())
             if self.Qcombo.currentText() == 'Camera 1':
                 if self.Qcombo2.currentText() == 'YOLO':
-                    return mainProcess(True,'new2')
+                    return mainProcess(True,'new2',self.Qcombo3.currentText())
                 else:
-                    return mainProcess(False,'new2')
+                    return mainProcess(False,'new2',self.Qcombo3.currentText())
             else:
                return GoalLineProcess()
+        
         self.Qcombo = QComboBox(self)
         self.Qcombo.addItem("Camera 1")
         self.Qcombo.addItem("Camera 2")
@@ -33,6 +34,12 @@ class MainWindow(QMainWindow):
         self.Qcombo2.addItem("YOLO")
         self.Qcombo2.setFixedSize(100,50)
         self.Qcombo2.move(50,50)
+
+        self.Qcombo3 = QComboBox(self)
+        self.Qcombo3.addItem("right")
+        self.Qcombo3.addItem("left")
+        self.Qcombo3.setFixedSize(100,50)
+        self.Qcombo3.move(50,150)
         
         self.pushButton = QPushButton("Activate",self)
         self.pushButton.setFixedSize(100,100)

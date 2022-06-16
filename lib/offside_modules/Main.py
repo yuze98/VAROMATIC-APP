@@ -8,13 +8,13 @@ from PlayerDetectionYOLO import loadYolo
 # # Folders to print in: 
 # # img,ball_img,img_class,Final_OutPut
 '''
-def mainProcess(isYolo,fileName):
+def mainProcess(isYolo,fileName,direction):
     clip = cv2.VideoCapture("assets/"+fileName+".mp4")
     index = 0
     col1=None
     col2=None
     prevFrame = None
-    direction = 'right'
+    # direction = direction
     frame_rate = 30 #current frame rate of the video is 30 
     prev = 0
     vp = None

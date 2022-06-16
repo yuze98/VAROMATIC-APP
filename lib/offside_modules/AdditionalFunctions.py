@@ -64,10 +64,11 @@ def gettingMeanVP(neededpoints):
 * @return           the final output shown with the results and the boundry lines of each player 
 '''
 def PrintFinalVisuals(frame, ind, decision,imgToShow):
-    cv2.putText(img=frame, text='Offside Decision: '+str(decision), org=(540, 520),
-                fontFace=cv2.FONT_HERSHEY_TRIPLEX, fontScale=1, color=(100, 30, 100), thickness=1)
     # cv2.imwrite("Final_OutPut/outputFrame"+str(ind)+".jpg", frame)
-    cv2.imshow("Frame", imgToShow)
+    res = cv2.resize(imgToShow, dsize=(900, 600), interpolation=cv2.INTER_CUBIC)
+    cv2.putText(img=res, text='Offside Decision: '+str(decision), org=(500, 560),
+                fontFace=cv2.FONT_HERSHEY_TRIPLEX, fontScale=1, color=(100, 30, 100), thickness=1)
+    cv2.imshow("Frame", res)
     return imgToShow
 '''
 * This function is used to get the intersection of both line if exists 
