@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QIcon
+from PyQt5 import QtCore
 import PyQt5.sip
 import sys
 sys.path.insert(1, 'D:/UNI STUFF/Fourth year comp/sem 2/GGP/VAROMATIC-APP/lib/offside_modules')
@@ -23,27 +24,62 @@ class MainWindow(QMainWindow):
             else:
                return GoalLineProcess('rec')
         
+        self.label_name = QLabel('CAMERA', self)
+        self.label_name.setStyleSheet("""QLabel{
+        color: white;
+        font: 14pt;
+        text-align:center;
+        }""")
+        self.label_name.setFixedSize(100,20)
+        self.label_name.move(760,25)
+
         self.Qcombo = QComboBox(self)
         self.Qcombo.addItem("Camera 1")
         self.Qcombo.addItem("Camera 2")
         self.Qcombo.setFixedSize(100,50)
         self.Qcombo.move(750,50)
 
+        self.label_name = QLabel('TECHNIQUE', self)
+        self.label_name.setStyleSheet("""QLabel{
+        color: white;
+        font: 14pt;
+        text-align:center;
+        }""")
+        self.label_name.setFixedSize(100,20)
+        self.label_name.move(50,25)
+
         self.Qcombo2 = QComboBox(self)
-        self.Qcombo2.addItem("IP")
+        self.Qcombo2.addItem("Image Processing")
         self.Qcombo2.addItem("YOLO")
-        self.Qcombo2.setFixedSize(100,50)
+        self.Qcombo2.setFixedSize(120,50)
         self.Qcombo2.move(50,50)
+
+        self.label_name = QLabel('ATTACK DIRECTION', self)
+        self.label_name.setStyleSheet("""QLabel{
+        color: white;
+        font: 14pt;
+        text-align:center;
+        }""")
+        self.label_name.setFixedSize(200,20)
+        self.label_name.move(50,125)
 
         self.Qcombo3 = QComboBox(self)
         self.Qcombo3.addItem("right")
         self.Qcombo3.addItem("left")
-        self.Qcombo3.setFixedSize(100,50)
+        self.Qcombo3.setFixedSize(120,50)
         self.Qcombo3.move(50,150)
         
         self.pushButton = QPushButton("Activate",self)
-        self.pushButton.setFixedSize(100,100)
-        self.pushButton.move(400,500)
+        self.pushButton.setFixedSize(200,50)
+        self.pushButton.move(350,500)   
+        self.pushButton.clicked.connect(activate)
+        self.pushButton.setIcon(QIcon('assets/logobg.jpg'))
+        self.pushButton.setIconSize(QtCore.QSize(64, 64))
+        self.pushButton.setStyleSheet("""QPushButton{
+        font: 14pt;
+        text-align:center;
+        background-image:url("D:/UNI STUFF/Fourth year comp/sem 2/GGP/VAROMATIC-APP/assets/grass.jpg");
+        }""")
 
         label = QLabel(self)
         pixmap = QPixmap('assets/logobg.jpg')
@@ -51,7 +87,6 @@ class MainWindow(QMainWindow):
         label.setFixedHeight(500)
         label.setFixedWidth(500)
         label.move(235,0)
-        self.pushButton.clicked.connect(activate)
         lay = QHBoxLayout(self)
         lay.addWidget(self.pushButton)
         lay.addWidget(self.pushButton)
@@ -69,6 +104,7 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setStyleSheet(stylesheet)     # <---
     window = MainWindow()
+    window.setWindowTitle("VAROMATIC")
     window.resize(900,700)
     window.show()
     sys.exit(app.exec_())
